@@ -143,11 +143,10 @@
       float: left;
       width: 100%;
       line-height: 60px;
-      text-align: center;
     }
 
     #alloy span.nav-title span {
-      font-size: 14px;
+      font-size: 18px;
       text-transform: uppercase;
       padding-left: 5px;
     }
@@ -155,6 +154,7 @@
     #alloy .notification {
       border: 1px solid #f14125;
       background-color: #f14125;
+      text-align: center;
     }
 
     #alloy span.notification-print {
@@ -202,6 +202,13 @@
 
     #alloy .mb-5 {
       margin-bottom: 5px;
+    }
+
+    #alloy a.download-offline {
+        float: right;
+        text-transform: uppercase;
+        font-size: 14px;
+        font-weight: 700;
     }
 
     @media print {
@@ -23540,7 +23547,8 @@
       <div class="container">
         <div class="row">
           <div class="col-md-12">
-            <span class="nav-title">Alloy <span>Paper [Offline] Wallet Generator</span>
+            <span class="nav-title">Alloy <span>Paper Wallet Generator</span>
+            <a class="download-offline" href="https://github.com/kh4n-ro/alloy-wallet-generator/archive/master.zip">Download Offline!</a>
               <div class="notification">
                 <span class="notification-text">Please make sure you <span class="notification-print" onclick="window.print();"">PRINT</span> your wallet or snapshot this page after generation</span>
               </div>
