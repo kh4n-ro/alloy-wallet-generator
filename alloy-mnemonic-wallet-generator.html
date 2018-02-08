@@ -209,6 +209,15 @@
         text-transform: uppercase;
         font-size: 14px;
         font-weight: 700;
+        margin: 0 15px;
+    }
+
+    #alloy .privatekey_class {
+      background-color: #f9f2f4;
+      float: left;
+      margin: 10px 0;
+      font-size: 14px;
+      line-height: 20px;
     }
 
     @media print {
@@ -23540,6 +23549,23 @@
   </script>
   <script>
 
+function walletRestore()
+{
+  document.getElementById("restorewallet").setAttribute("style", "display:block");
+  document.getElementById("createwallet").setAttribute("style", "display:none");
+  document.getElementById("restorebutton").setAttribute("style", "display:none");
+  document.getElementById("createbutton").setAttribute("style", "display:block");
+
+}
+
+function walletCreate()
+{
+  document.getElementById("restorewallet").setAttribute("style", "display:none");
+  document.getElementById("createwallet").setAttribute("style", "display:block");
+  document.getElementById("restorebutton").setAttribute("style", "display:block");
+  document.getElementById("createbutton").setAttribute("style", "display:none");
+
+}
 
   </script>
 
@@ -23549,7 +23575,9 @@
         <div class="row">
           <div class="col-md-12">
             <span class="nav-title">Alloy <span>Paper Wallet Generator</span>
-            <a class="download-offline" href="https://github.com/kh4n-ro/alloy-wallet-generator/archive/master.zip">Download Offline!</a>
+              <a id="createbutton" class="download-offline" href="#" onclick="js:walletCreate()" style="display:none;">Create Wallet!</a>
+              <a id="restorebutton" class="download-offline" href="#" onclick="js:walletRestore()">Restore Wallet!</a>
+              <a class="download-offline" href="https://github.com/kh4n-ro/alloy-wallet-generator/archive/master.zip">Download Offline!</a>
               <div class="notification">
                 <span class="notification-text">Please make sure you <span class="notification-print" onclick="window.print();"">PRINT</span> your wallet or snapshot this page after generation</span>
               </div>
@@ -23573,6 +23601,9 @@
             </div>
           </div>
       </div>
+
+      <div id="restorewallet" style="display:none;">
+
       <div class="row no-print">
         <div class="col-md-12">
           <div class="panel panel-default">
@@ -23605,6 +23636,11 @@
           </div>
         </div>
       </div>
+
+</div>
+
+<div id="createwallet">
+
       <div class="row no-print">
           <div class="col-md-6">
         <div class="panel panel-default">
@@ -23741,8 +23777,8 @@
                     <tr style="background-color: #333;">
                         <td><code class="black-code pull-left" style="word-break: break-all;">Tracking&nbsp;key:&nbsp;</code><code class="black-code pull-right" id="tracking_keys_widget" style="word-break: break-all;">Generating...</code></td>
                     </tr>
-                    <tr style="background-color: #333;">
-                        <td><code class="black-code pull-left" style="word-break: break-all;">Private&nbsp;key:&nbsp;</code><code class="black-code pull-right" id="wallet_keys_widget" style="word-break: break-all;">Generating...</code></td>
+                    <tr class="privatekey_class">
+                        <td><code class="pull-left" style="word-break: break-all;">Private&nbsp;key&nbsp;(Import this key into the <strong>GUI wallet</strong>):&nbsp;</code><code class="pull-right" id="wallet_keys_widget" style="word-break: break-all;">Generating...</code></td>
                     </tr>
                     </tbody>
                 </table>
@@ -23752,6 +23788,8 @@
           </div>
         </div>
           </div>
+      </div>
+
       </div>
       <footer class="page-footer no-print">
         <div class="row">
@@ -23827,6 +23865,9 @@ function checkrestoreseed(seed)
 
     qr=new QRCode(address_qr_widget, {correctLevel:QRCode.CorrectLevel.L});
     qr.makeCode("alloy:"+keys.public_addr);
+
+    /* reveal wallet details */
+    walletCreate();
   }
 }
 
